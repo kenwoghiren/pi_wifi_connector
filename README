@@ -3,3 +3,5 @@
 ## Author: Ken Woghiren
 
 ## Version: 1.0b 26-Feb-2025
+
+### Installation: cargo build --release ; install.sh

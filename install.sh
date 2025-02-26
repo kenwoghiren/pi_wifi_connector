@@ -1,14 +1,12 @@
 #!/bin/bash
-# build the binary ...
-cargo build --release
-# ..move to /usr/local/bin
+# Move the binary to /usr/local/bin ...
 sudo cp target/release/pi_wifi_connector /usr/local/bin/pi_wifi_connector
 # ..make it executable ...
 sudo chmod +x /usr/local/bin/pi_wifi_connector
 # ..edit crontab ...
 # Define the cron job lines
-CRON_JOB_REBOOT="@reboot /usr/local/bin/connect_to_my_networks /home/pi/my_wifi_networks.yaml 2&>1 1>/dev/null"
-CRON_JOB_EVERY_MINUTE="* * * * * /usr/local/bin/connect_to_my_networks /home/pi/my_wifi_networks.yaml 2&>1 1>/dev/null"
+CRON_JOB_REBOOT="@reboot /usr/local/bin/pi_wifi_connector /home/pi/my_wifi_networks.yaml 2&>1 1>/dev/null"
+CRON_JOB_EVERY_MINUTE="* * * * * /usr/local/bin/pi_wifi_connector /home/pi/my_wifi_networks.yaml 2&>1 1>/dev/null"
 
 # Get the current user's crontab
 CURRENT_CRON=$(crontab -l 2>/dev/null)
